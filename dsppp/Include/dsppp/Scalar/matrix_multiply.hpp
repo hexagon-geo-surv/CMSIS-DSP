@@ -45,6 +45,17 @@ template<typename M,
          typename V,
          typename RES>
 inline void _dot_m_v(RES &res,
+                     const TransposeView<M> &m,
+                     const V &v,
+                     const Scalar* = nullptr)
+{
+    detail::dot_transposed_unrolled(res,m,v);
+}
+
+template<typename M,
+         typename V,
+         typename RES>
+inline void _dot_m_v(RES &res,
                      const M&m,const V&v,
                      const Scalar* = nullptr)
 {
